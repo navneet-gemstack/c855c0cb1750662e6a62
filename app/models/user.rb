@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-	   validates :email, uniqueness: true
+	  validates :email, presence: true
+	  validates :email, uniqueness: true
 
 	self.per_page = 3
 	
