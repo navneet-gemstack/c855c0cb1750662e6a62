@@ -33,8 +33,8 @@ class Api::UserController < ApplicationController
 	end
 
 	def typeahead
-		user = User.type_match(params[:input]) 
-		render json: user
+		users = User.type_match(params[:input]) 
+		render json: users
 
 	end
 
