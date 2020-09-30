@@ -1,8 +1,6 @@
 class User < ApplicationRecord
 	  validates :email, presence: true
 	  validates :email, uniqueness: true
-
-	self.per_page = 3
 	
 	def self.type_match(str)
 		search = "%#{str}%"
