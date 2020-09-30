@@ -2,7 +2,7 @@ class Api::UserController < ApplicationController
 	protect_from_forgery with: :null_session
 	before_action :set_user, only: [:show, :update, :destroy]
 
-	def users
+	def index
 		render json: User.paginate(page: params[:page], per_page: 3)
 	end
 
@@ -29,6 +29,7 @@ class Api::UserController < ApplicationController
 
 	def destroy
 		@user.destroy
+		render json: {user:[], message:"record deleted successfully"}
 	end
 
 	def typeahead
@@ -41,6 +42,8 @@ class Api::UserController < ApplicationController
 
 	def set_user
 		@user = User.find(params[:id])
+		render json: "Record Not Found" unless @user.present?
+
 	end
 
 	def user_params
